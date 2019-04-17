@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-white rounded-bottom border-bottom">
+  <header class="bg-white rounded-bottom border-bottom d-block fixed-top">
     <b-navbar toggleable="md" type="light" class="container p-3">
       <!-- logo 开始  -->
       <b-navbar-brand href="#">

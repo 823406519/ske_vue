@@ -1,5 +1,13 @@
 $liu-primary-color: #007bff;
+$liu-secondary-color: #f6f6f6;
 $liu-danger-color: #dc3545;
+$liu-dark-color: #343a40;
+$liu-white-white: #fff;
+
+// 字体大小
+.liu-font-size-sm {
+  font-size: 14px;
+}
 
 .liu-app-bg {
   background-color: #f6f6f6;
@@ -20,7 +28,31 @@ $liu-danger-color: #dc3545;
   }
 }
 
+.liu-content-section {
+  margin-top: 90px !important;
+}
+
 // 字体图标大小
 .liu-icon-sm {
   font-size: 1.5rem;
+}
+.liu-icon-md {
+  font-size: 2rem;
+}
+
+// badge
+.liu-badge {
+  display: block;
+  margin: 0 auto;
+  width: 5rem;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 10rem;
+  background-color: $liu-secondary-color;
+  color: $liu-dark-color;
+  &:hover {
+    text-decoration: none;
+    background-color: $liu-primary-color;
+    color: #fff;
+  }
 }

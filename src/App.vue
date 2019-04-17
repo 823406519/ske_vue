@@ -3,7 +3,7 @@
     <Header/>
 
     <!-- 内容区域 -->
-    <section class="mt-4 container">
+    <section class="container liu-content-section">
       <div class="row">
         <main class="col-md-8 bg-white rounded-lg border">
           <router-view></router-view>
