@@ -1,0 +1,26 @@
+$liu-primary-color: #007bff;
+$liu-danger-color: #dc3545;
+
+.liu-app-bg {
+  background-color: #f6f6f6;
+}
+
+.liu-header {
+  border-bottom: 1px solid #f1f1f1 !important;
+  background-color: #fff;
+}
+
+.liu-link-exact-active {
+  color: $liu-primary-color !important;
+}
+
+.liu-link-hover {
+  &:hover {
+    color: $liu-primary-color !important;
+  }
+}
+
+// 字体图标大小
+.liu-icon-sm {
+  font-size: 1.5rem;
+}
