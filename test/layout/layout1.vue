@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <main class="col-md-8 bg-white rounded-lg border">
-      <h1>关于我们</h1>
+      <h1>布局1</h1>
     </main>
     <div class="col-md-4">
       <div class="row">

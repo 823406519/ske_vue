@@ -49,7 +49,14 @@
 
 # 路由路由设计
 
-# 安装eleent-ui 作为ui库
-  - yarn add babel-plugin-component element-ui（按需导入）
+# 安装bootstrap vue 作为ui库
+  - yarn add vue bootstrap-vue bootstrap
+
+# 构建页面以及组件
+- header
+  - logo + nav + search + user-icon(or login|register)
+- main
+- aside
+  - join + tag + contact + other
 
 

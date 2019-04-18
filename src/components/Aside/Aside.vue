@@ -1,6 +1,26 @@
 <template>
   <aside class="col">
+    <!-- 创作者中心 -->
     <section class="bg-white rounded-lg border">
+      <!-- 标题部分 -->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <i class="iconfont icon-chuangzuozhongxin liu-icon-sm text-primary font-weight-bold"></i>
+          <span class="ml-3">参与创作</span>
+        </li>
+      </ul>
+      <!-- 内容部分  -->
+      <div class="card-body">
+        <p class="card-text">您的每一份创作，我们都倍感感激！</p>
+        <router-link to="/write" target="_blank" class="ml-3 mr-4 text-decoration-none">
+          <i class="iconfont icon-combinedshapecopy2 text-primary font-weight-bold"></i>
+          <span class="ml-2">写文章</span>
+        </router-link>
+      </div>
+    </section>
+
+    <!-- 加入我们 -->
+    <section class="bg-white rounded-lg border mt-3">
       <!-- 标题部分 -->
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -24,7 +44,11 @@
         >
           <i class="iconfont icon-github liu-icon-sm"></i> ske_server
         </a>
-        <a href="#" class="btn btn-primary d-block mt-4">参与项目</a>
+        <a
+          href="https://github.com/823406519/ske"
+          target="_blank"
+          class="btn btn-primary d-block mt-4"
+        >参与项目</a>
       </div>
     </section>
 

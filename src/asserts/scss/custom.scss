@@ -9,6 +9,15 @@ $liu-white-white: #fff;
   font-size: 14px;
 }
 
+.liu-font-size-md {
+  font-size: 20px;
+}
+
+// 其他
+.liu-content-section {
+  margin-top: 90px !important;
+}
+
 .liu-app-bg {
   background-color: #f6f6f6;
 }
@@ -26,10 +35,6 @@ $liu-white-white: #fff;
   &:hover {
     color: $liu-primary-color !important;
   }
-}
-
-.liu-content-section {
-  margin-top: 90px !important;
 }
 
 // 字体图标大小
@@ -56,3 +61,11 @@ $liu-white-white: #fff;
     color: #fff;
   }
 }
+
+// ---------------- 覆盖bootstrap样式
+// 删除用户图标的下拉菜单
+#liu-user .dropdown-toggle::after {
+  border: none;
+}
+
+// Write.vue 的样式和修正部分
