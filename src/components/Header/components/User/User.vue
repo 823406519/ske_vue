@@ -22,6 +22,8 @@
       <LoginModal/>
       <!-- 注册modal -->
       <RegisterModal/>
+      <!-- 忘记密码modal -->
+      <ForgetPswModal/>
     </div>
   </div>
 </template>
@@ -29,15 +31,17 @@
 <script>
 import LoginModal from "./components/LoginModal.vue";
 import RegisterModal from "./components/RegisterModal.vue";
+import ForgetPswModal from "./components/ForgetPswModal.vue";
 export default {
   data() {
     return {
-      isLogin: true
+      isLogin: false
     };
   },
   components: {
     LoginModal,
-    RegisterModal
+    RegisterModal,
+    ForgetPswModal
   }
 };
 </script>

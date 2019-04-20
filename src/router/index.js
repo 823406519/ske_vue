@@ -21,6 +21,10 @@ import ChangePassword from '../views/UsersProfile/components/ChangePassword.vue'
 import Resource from '../views/Resource.vue'
 import Edit from '../views/Edit.vue'
 
+import ResetPsw from '../views/ResetPsw.vue'
+
+import NotFound from '../views/NotFound.vue'
+
 export default new Router({
   routes: [
     // 推荐资源
@@ -33,19 +37,19 @@ export default new Router({
       }
     },
 
-    // 关于我们
+    // 分类
     {
-      path: '/about-us',
-      component: About,
+      path: '/classification',
+      component: Classification,
       meta: {
         showHeader: true
       }
     },
 
-    // 分类
+    // 关于我们
     {
-      path: '/classification',
-      component: Classification,
+      path: '/about-us',
+      component: About,
       meta: {
         showHeader: true
       }
@@ -138,7 +142,7 @@ export default new Router({
       path: 'users/:id/logout'
     },
 
-    // 文章
+    // 取得资源
     {
       path: '/resources/:id',
       component: Resource,
@@ -151,6 +155,17 @@ export default new Router({
     {
       path: '/resources/:id/edit',
       component: Edit
+    },
+
+    {
+      path: '/reset-password/:token',
+      component: ResetPsw
+    },
+
+    // 404
+    {
+      path: '*',
+      component: NotFound
     }
   ]
 })

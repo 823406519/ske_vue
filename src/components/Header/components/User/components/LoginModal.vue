@@ -11,7 +11,7 @@
     </div>
     <!-- 表单部分 -->
 
-    <b-form class="mt-4 mx-auto" style="width: 20rem" v-show="isShow">
+    <b-form class="mt-4 mx-auto" style="width: 20rem">
       <b-input type="email" id="email" placeholder="输入邮箱" v-model="email"></b-input>
       <b-input
         type="password"
@@ -22,7 +22,17 @@
         autocomplete
       ></b-input>
 
-      <button type="submit" class="btn btn-primary d-block w-100 mt-4" @click="onSubmit">登陆</button>
+      <div class="text-right mt-2">
+        <a
+          href="#"
+          class="text-muted text-decoration-none liu-link-hover"
+          style="font-size: 14px"
+          @click="showForgetModal"
+          ref="showForgetModalBtn"
+        >忘记密码？</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary d-block w-100 mt-2" @click="onSubmit">登陆</button>
     </b-form>
 
     <!-- footer部分 -->
@@ -45,8 +55,7 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
-      isShow: true
+      password: ""
     };
   },
   methods: {
@@ -65,6 +74,15 @@ export default {
     showRegisterModal() {
       this.$root.$emit("bv::hide::modal", "login-modal", "#showRegisterBtn");
       this.$root.$emit("bv::show::modal", "register-modal", "#showRegisterBtn");
+    },
+
+    showForgetModal() {
+      this.$root.$emit("bv::hide::modal", "login-modal", "#showForgetModalBtn");
+      this.$root.$emit(
+        "bv::show::modal",
+        "fotgetPsw-modal",
+        "#showForgetModalBtn"
+      );
     }
   }
 };
