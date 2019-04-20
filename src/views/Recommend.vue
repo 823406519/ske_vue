@@ -14,6 +14,7 @@
           v-for="(n,index) in 20"
           :key="index"
           style="cursor: pointer"
+          @click="routeToResource('testid')"
         >
           <img
             src="https://s.gravatar.com/avatar/485b00f4d6ee8f6f68f6c44856a08f88?s=200&r=pg&d=mm"
@@ -53,6 +54,11 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    routeToResource(id) {
+      this.$router.push(`/resources/${id}`);
+    }
   }
 };
 </script>

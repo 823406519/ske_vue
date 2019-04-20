@@ -14,6 +14,12 @@ import UsersProfile from '../views/UsersProfile/UsersProfile.vue'
 import UserBasicInfo from '../views/UsersProfile/components/UserBasicInfo.vue'
 import UsersResource from '../views/UsersProfile/components/UsersResource.vue'
 import UserColletions from '../views/UsersProfile/components/UserColletions.vue'
+import UserSettings from '../views/UsersProfile/components/UserSettings.vue'
+import ChangeProfile from '../views/UsersProfile/components/ChangeProfile.vue'
+import ChangePassword from '../views/UsersProfile/components/ChangePassword.vue'
+
+import Resource from '../views/Resource.vue'
+import Edit from '../views/Edit.vue'
 
 export default new Router({
   routes: [
@@ -97,12 +103,54 @@ export default new Router({
           meta: {
             showHeader: true
           }
-        },
+        }
       ]
     },
+
+    // 个人中心 - 设置
+    {
+      path: '/users/:id/settings',
+      component: UserSettings,
+      meta: {
+        showHeader: true
+      },
+      children: [
+        {
+          path: 'profile',
+          alias: '/users/:id/settings',
+          component: ChangeProfile,
+          meta: {
+            showHeader: true
+          }
+        },
+        {
+          path: 'password',
+          component: ChangePassword,
+          meta: {
+            showHeader: true
+          }
+        }
+      ]
+    },
+
     // 个人中心 -注销
     {
       path: 'users/:id/logout'
+    },
+
+    // 文章
+    {
+      path: '/resources/:id',
+      component: Resource,
+      meta: {
+        showHeader: true
+      }
+    },
+
+    // 编辑文章
+    {
+      path: '/resources/:id/edit',
+      component: Edit
     }
   ]
 })

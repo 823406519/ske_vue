@@ -5,11 +5,12 @@
         <template slot="button-content">
           <i class="iconfont icon-yonghu liu-icon-sm text-primary font-weight-bold"></i>
         </template>
-        <b-dropdown-item to="/users/test123456">个人中心</b-dropdown-item>
+        <b-dropdown-item to="/users/:id">个人中心</b-dropdown-item>
         <b-dropdown-item to="/write" target="_blank">写文章</b-dropdown-item>
-        <b-dropdown-item to="/users/id/resources">我的资源</b-dropdown-item>
-        <b-dropdown-item to="/users/id/collections">我的收藏</b-dropdown-item>
-        <b-dropdown-item to="/users/id/logout">注销</b-dropdown-item>
+        <b-dropdown-item to="/users/:id/resources">我的资源</b-dropdown-item>
+        <b-dropdown-item to="/users/:id/collections">我的收藏</b-dropdown-item>
+        <b-dropdown-item to="/users/:id/settings">设置</b-dropdown-item>
+        <b-dropdown-item to="/users/:id/logout">注销</b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
 
