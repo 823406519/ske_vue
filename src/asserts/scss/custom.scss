@@ -5,6 +5,7 @@ $liu-dark-color: #343a40;
 $liu-white-white: #fff;
 
 // 字体大小
+
 .liu-font-size-sm {
   font-size: 14px;
 }
@@ -13,9 +14,16 @@ $liu-white-white: #fff;
   font-size: 20px;
 }
 
+.liu-font-size-xl {
+  font-size: 80px;
+}
+
+.liu-logo-size {
+  font-size: 20px !important;
+}
 // 其他
 .liu-content-section {
-  margin-top: 90px !important;
+  margin-top: 100px !important;
 }
 
 .liu-app-bg {
@@ -38,6 +46,12 @@ $liu-white-white: #fff;
 }
 
 // 字体图标大小
+.liu-icon-xl {
+  font-size: 0.7rem;
+}
+.liu-icon-normal {
+  font-size: 1rem;
+}
 .liu-icon-sm {
   font-size: 1.5rem;
 }
@@ -69,3 +83,18 @@ $liu-white-white: #fff;
 }
 
 // Write.vue 的样式和修正部分
+
+// min height
+$height: (
+  '100': 100px,
+  '200': 100px,
+  '300': 300px,
+  '400': 400px,
+  '500': 500px,
+  '600': 600px
+);
+@each $size, $value in $height {
+  .liu-min-height-#{$size} {
+    min-height: $value;
+  }
+}

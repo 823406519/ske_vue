@@ -9,7 +9,12 @@ import Search from '../views/Search.vue'
 import Recommend from '../views/Recommend.vue'
 import Write from '../views/Write.vue'
 
-// 导出router部分
+import UsersProfile from '../views/UsersProfile/UsersProfile.vue'
+
+import UserBasicInfo from '../views/UsersProfile/components/UserBasicInfo.vue'
+import UsersResource from '../views/UsersProfile/components/UsersResource.vue'
+import UserColletions from '../views/UsersProfile/components/UserColletions.vue'
+
 export default new Router({
   routes: [
     // 推荐资源
@@ -56,6 +61,48 @@ export default new Router({
       meta: {
         showHeader: false
       }
+    },
+
+    // 个人中心
+    {
+      path: '/users/:id',
+      component: UsersProfile,
+      meta: {
+        showHeader: true
+      },
+      children: [
+        // 基础信息
+        {
+          path: 'basic-info',
+          alias: '/users/:id',
+          component: UserBasicInfo,
+          meta: {
+            showHeader: true
+          }
+        },
+
+        // 个人资源
+        {
+          path: 'resources',
+          component: UsersResource,
+          meta: {
+            showHeader: true
+          }
+        },
+
+        // 个人收藏
+        {
+          path: 'collections',
+          component: UserColletions,
+          meta: {
+            showHeader: true
+          }
+        },
+      ]
+    },
+    // 个人中心 -注销
+    {
+      path: 'users/:id/logout'
     }
   ]
 })

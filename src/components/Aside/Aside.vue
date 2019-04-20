@@ -1,5 +1,5 @@
 <template>
-  <aside class="col">
+  <aside class="col mt-3 mt-md-0">
     <!-- 创作者中心 -->
     <section class="bg-white rounded-lg border">
       <!-- 标题部分 -->

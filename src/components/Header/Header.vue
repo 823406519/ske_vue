@@ -1,9 +1,10 @@
 <template>
   <header class="bg-white rounded-bottom border-bottom fixed-top">
-    <b-navbar toggleable="lg" type="light" class="container p-3">
+    <b-navbar toggleable="md" type="light" class="container">
       <!-- logo 开始  -->
-      <b-navbar-brand href="#">
-        <span>图标</span> Logo
+      <b-navbar-brand to="/">
+        <i class="iconfont icon-fenxiang liu-icon-sm text-primary font-weight-bold"></i>
+        <span class="text-primary ml-2">SKE</span>
       </b-navbar-brand>
       <!-- logo结束 -->
 

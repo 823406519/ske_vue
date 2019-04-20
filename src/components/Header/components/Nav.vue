@@ -12,6 +12,30 @@
       exact-active-class="liu-link-exact-active"
       link-classes="liu-link-hover"
     >关于我们</b-nav-item>
+
+    <!-- @todo 需要完善的响应式设计 -->
+    <b-nav-item
+      to="/search"
+      exact-active-class="liu-link-exact-active"
+      link-classes="liu-link-hover"
+      class="d-block d-md-none"
+    >搜索</b-nav-item>
+
+    <!-- @todo 需要完善的响应式设计 -->
+    <b-nav-item
+      to="/login"
+      exact-active-class="liu-link-exact-active"
+      link-classes="liu-link-hover"
+      class="d-block d-md-none"
+    >登陆</b-nav-item>
+
+    <!-- @todo 需要完善的响应式设计 -->
+    <b-nav-item
+      to="/about-us"
+      exact-active-class="liu-link-exact-active"
+      link-classes="liu-link-hover"
+      class="d-block d-md-none"
+    >注册</b-nav-item>
   </b-navbar-nav>
   <!-- 导航结束 -->
 </template>

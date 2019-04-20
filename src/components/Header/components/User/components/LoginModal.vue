@@ -3,10 +3,10 @@
   <b-modal id="login-modal" header-class="border-0 pt-2 pb-0 px-3" centered hide-footer>
     <!-- 标题部分 -->
     <div class="text-center">
-      <h1>
-        <i>Logo</i>
-        <span class="text-primary pl-3">SKE</span>
-      </h1>
+      <a href="/" class="d-block text-decoration-none" style="font-size: 2.5rem">
+        <i class="iconfont icon-fenxiang text-primary font-weight-bold" style="font-size: 2.5rem"></i>
+        <span class="text-primary ml-2">SKE</span>
+      </a>
       <span>Share More, Learn More</span>
     </div>
     <!-- 表单部分 -->
