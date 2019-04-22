@@ -23,6 +23,8 @@ import Edit from '../views/Edit.vue'
 
 import ResetPsw from '../views/ResetPsw.vue'
 
+import Test from '../views/Test.vue'
+
 import NotFound from '../views/NotFound.vue'
 
 export default new Router({
@@ -160,6 +162,12 @@ export default new Router({
     {
       path: '/reset-password/:token',
       component: ResetPsw
+    },
+
+    // 测试
+    {
+      path: '/test',
+      component: Test
     },
 
     // 404

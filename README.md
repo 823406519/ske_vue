@@ -47,7 +47,7 @@
 
 # 前端模块页面整体构造
 
-# 路由路由设计
+# 路由设计
 
 # 安装bootstrap vue 作为ui库
   - yarn add vue bootstrap-vue bootstrap
@@ -58,5 +58,7 @@
 - main
 - aside
   - join + tag + contact + other
+
+# vuex状态管理
 
 

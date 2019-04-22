@@ -32,7 +32,7 @@
         >忘记密码？</a>
       </div>
 
-      <button type="submit" class="btn btn-primary d-block w-100 mt-2" @click="onSubmit">登陆</button>
+      <button type="submit" class="btn btn-primary d-block w-100 mt-2" @click="onLogin">登陆</button>
     </b-form>
 
     <!-- footer部分 -->
@@ -46,6 +46,10 @@
         class="mr-3"
         ref="showRegisterBtn"
       >注册</a>
+
+      <b-modal ref="alert-modal" header-class="border-0 pt-2 pb-0 px-3" centered hide-footer>
+        <h1>hello world</h1>
+      </b-modal>
     </footer>
   </b-modal>
 </template>
@@ -60,7 +64,23 @@ export default {
   },
   methods: {
     // 提交数据
-    onSubmit() {
+    test() {
+      alert("helllo");
+    },
+
+    async onLogin() {
+      // 通过action提交表单数据，获取数据，mutation更新state
+      const result = await this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password
+      });
+      console.log("result ---->", result);
+      // 成功登陆
+      /*  if (code === 0) {
+        this.$refs["alert-modal"].show();
+      } */
+
+      // 置空数据
       this.email = "";
       this.password = "";
       this.isShow = false; // 清除验证状态

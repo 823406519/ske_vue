@@ -32,16 +32,20 @@
 import LoginModal from "./components/LoginModal.vue";
 import RegisterModal from "./components/RegisterModal.vue";
 import ForgetPswModal from "./components/ForgetPswModal.vue";
+
+import { mapState } from "vuex";
 export default {
   data() {
-    return {
-      isLogin: false
-    };
+    return {};
   },
   components: {
     LoginModal,
     RegisterModal,
     ForgetPswModal
-  }
+  },
+  computed: {
+    ...mapState(["isLogin"])
+  },
+  methods: {}
 };
 </script>
