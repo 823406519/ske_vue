@@ -1,11 +1,11 @@
 <template>
   <div>
-    <!-- 数据列表 -->
-    <ul class="list-unstyled px-4">
+    <!-- 动态收藏列表 -->
+    <ul class="list-unstyled mt-5 px-4">
       <li
         class="media mt-4 border-bottom"
-        v-for="(n,index) in 5"
-        :key="index"
+        v-for="resource in profile.collectionsList"
+        :key="resource._id"
         style="cursor: pointer"
       >
         <img
@@ -16,17 +16,56 @@
         >
         <div class="media-body">
           <div class="liu-font-size-sm text-muted">
-            <a href="#" class="text-muted liu-link-hover">Liuyaohui</a> ·
-            <span>10小时前</span> ·
-            <a href="#" class="text-muted liu-link-hover">计算机科学</a>
+            <router-link
+              :to="`/users/${resource.author_id}`"
+              class="text-muted liu-link-hover"
+            >{{resource.author_name}}</router-link>·
+            <span>{{getResourceTime(resource.last_update_time)}}</span> ·
+            <router-link
+              :to="`/classification/${resource.classification}`"
+              class="text-muted liu-link-hover"
+            >{{getClassificationName(resource.classification)}}</router-link>
           </div>
-          <h5 class="mt-1 mb-1 font-weight-bold">如何学习前端</h5>
-          <p class="text-muted liu-font-size-sm">
-            前端工程师最首要的任务就是把设计师的设计图切好并翻译成代码，所以我们要学习一些设计软件的基础操作和切图方法。
-            工欲善其事，必先利其器。可以用的编辑器和IDE有很多，在这里我只推荐最棒的两个......
-          </p>
+          <div @click="routeToResource(resource._id)">
+            <h5 class="mt-1 mb-1 font-weight-bold">{{resource.title}}</h5>
+            <p class="text-muted liu-font-size-sm">{{resource.content}}</p>
+          </div>
         </div>
       </li>
     </ul>
   </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+export default {
+  computed: {
+    ...mapState(["profile"])
+  },
+  methods: {
+    // 静态资源跳转
+    routeToResource(id) {
+      this.$router.push(`/resources/${id}`);
+    },
+    // 计算资源时间
+    getResourceTime(time) {
+      const result = new Date(time);
+      return `${result.getFullYear()}年${result.getMonth() +
+        1}月${result.getDate()}日`;
+    },
+
+    // 计算分类名
+    getClassificationName(num) {
+      if (num === 0) return "计算机科学";
+      if (num === 1) return "经济";
+      if (num === 2) return "社会科学";
+      if (num === 3) return "历史";
+      if (num === 4) return "人文艺术";
+    }
+  },
+  created() {
+    const _id = this.$route.params._id;
+    this.$store.dispatch("getUserInfo", _id);
+  }
+};
+</script>

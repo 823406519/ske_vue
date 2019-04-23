@@ -5,24 +5,24 @@
         <div class="col-3 flex-column border-right p-0">
           <div class="list-group border-0">
             <router-link
-              to="/users/:id/basic-info"
+              :to="`/users/${this.$route.params._id}/basic-info`"
               append
               class="list-group-item list-group-item-action border-0"
-              :class="{active: $route.path === '/users/:id' || $route.path === '/users/:id/basic-info' }"
+              :class="{active: $route.path === `/users/${this.$route.params._id}` || $route.path === `/users/${this.$route.params._id}/basic-info` }"
             >基本信息</router-link>
 
             <router-link
-              to="/users/:id/resources"
+              :to="`/users/${this.$route.params._id}/resources`"
               append
               class="list-group-item list-group-item-action border-0"
-              :class="{active: $route.path === '/users/:id/resources'}"
+              :class="{active: $route.path === `/users/${this.$route.params._id}/resources`}"
             >个人资源</router-link>
 
             <router-link
-              to="/users/:id/collections"
+              :to="`/users/${this.$route.params._id}/collections`"
               append
               class="list-group-item list-group-item-action border-0"
-              :class="{active: $route.path === '/users/:id/collections'}"
+              :class="{active: $route.path === `/users/${this.$route.params._id}/collections`}"
             >个人收藏</router-link>
           </div>
         </div>
@@ -43,13 +43,10 @@
 
 <script>
 import UserAside from "../../components/UserAside/UserAside.vue";
+
 export default {
   components: {
     UserAside
-  },
-  data() {
-    return {};
-  },
-  methods: {}
+  }
 };
 </script>

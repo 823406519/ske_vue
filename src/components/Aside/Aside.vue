@@ -64,16 +64,16 @@
       <!-- 内容部分 -->
       <div class="card-body">
         <div class="justify-content-between d-flex">
-          <a href="#" class="liu-badge">Html</a>
-          <a href="#" class="liu-badge">Css</a>
+          <a href="#" class="liu-badge" @click="handleSearch('html')">Html</a>
+          <a href="#" class="liu-badge" @click="handleSearch('Css')">Css</a>
         </div>
         <div class="justify-content-between d-flex mt-3">
-          <a href="#" class="liu-badge">Vue</a>
-          <a href="#" class="liu-badge">React</a>
+          <a href="#" class="liu-badge" @click="handleSearch('Vue')">Vue</a>
+          <a href="#" class="liu-badge" @click="handleSearch('React')">React</a>
         </div>
         <div class="justify-content-between d-flex mt-3">
-          <a href="#" class="liu-badge">JavaScript</a>
-          <a href="#" class="liu-badge">TypeScript</a>
+          <a href="#" class="liu-badge" @click="handleSearch('JavaScript')">JavaScript</a>
+          <a href="#" class="liu-badge" @click="handleSearch('TypeScript')">TypeScript</a>
         </div>
 
         <a href="#" class="btn btn-primary d-block mt-4">全部标签</a>
@@ -125,3 +125,14 @@
     </div>
   </aside>
 </template>
+
+<script>
+export default {
+  methods: {
+    handleSearch(title) {
+      this.$store.dispatch("search", { title, sort: "hot" });
+      this.$router.push("/search/" + title);
+    }
+  }
+};
+</script>

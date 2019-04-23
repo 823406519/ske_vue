@@ -15,7 +15,7 @@ axios.interceptors.request.use(
   config => {
     // 请求前要做的事
     const token = localStorage.getItem('token')
-    console.log('请求拦截获取到的token ----->', token)
+    // console.log('请求拦截获取到的token ----->', token)
     // const token = state.token // 为了避免获取到过期的token，我们不从locaostorage中获取token
     if (token) config.headers.Authorization = token // token存在，则假如Authorization请求头
     return config

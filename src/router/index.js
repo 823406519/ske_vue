@@ -42,6 +42,7 @@ export default new Router({
     // 分类
     {
       path: '/classification',
+      alias: '/classification/:classification',
       component: Classification,
       meta: {
         showHeader: true
@@ -77,7 +78,7 @@ export default new Router({
 
     // 个人中心
     {
-      path: '/users/:id',
+      path: '/users/:_id',
       component: UsersProfile,
       meta: {
         showHeader: true
@@ -86,7 +87,7 @@ export default new Router({
         // 基础信息
         {
           path: 'basic-info',
-          alias: '/users/:id',
+          alias: '/users/:_id',
           component: UserBasicInfo,
           meta: {
             showHeader: true
@@ -115,7 +116,7 @@ export default new Router({
 
     // 个人中心 - 设置
     {
-      path: '/users/:id/settings',
+      path: '/users/:_id/settings',
       component: UserSettings,
       meta: {
         showHeader: true
@@ -123,7 +124,7 @@ export default new Router({
       children: [
         {
           path: 'profile',
-          alias: '/users/:id/settings',
+          alias: '/users/:_id/settings',
           component: ChangeProfile,
           meta: {
             showHeader: true
@@ -139,14 +140,9 @@ export default new Router({
       ]
     },
 
-    // 个人中心 -注销
-    {
-      path: 'users/:id/logout'
-    },
-
     // 取得资源
     {
-      path: '/resources/:id',
+      path: '/resources/:_id',
       component: Resource,
       meta: {
         showHeader: true
@@ -155,10 +151,11 @@ export default new Router({
 
     // 编辑文章
     {
-      path: '/resources/:id/edit',
+      path: '/resources/:_id/edit',
       component: Edit
     },
 
+    // 重置密码
     {
       path: '/reset-password/:token',
       component: ResetPsw

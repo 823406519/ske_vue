@@ -5,7 +5,7 @@
         <div class="row">
           <h5 class="col-10 text-primary">写文章</h5>
           <div class="col-2">
-            <b-button v-b-toggle.post variant="primary" size="sm">发布</b-button>
+            <b-button v-b-toggle.post variant="primary" size="sm" @click="handlePost">发布</b-button>
           </div>
         </div>
       </div>
@@ -34,8 +34,8 @@
 
         <div>
           <b-form-textarea
-            id="write-article"
             placeholder="输入正文..."
+            v-model="content"
             rows="100"
             style="width: 50rem"
             class="mt-3 border-0 p-4"
@@ -43,17 +43,28 @@
         </div>
       </div>
     </main>
+
+    <!-- 外部发表文章成功的modal -->
+    <b-modal ref="post-success-modal" header-class="border-0 pb-0 " size="sm" hide-footer>
+      <span class="text-center d-block font-weight-bold text-success">
+        {{successMessage}}
+        <button class="btn btn-sm btn-primary ml-2" @click="handleBack">关闭窗口</button>
+      </span>
+    </b-modal>
+
+    <!-- 外部的发表失败modal -->
+    <b-modal ref="post-fail-modal" header-class="border-0 pb-0 " size="sm" hide-footer>
+      <span class="text-center d-block font-weight-bold text-danger">{{alertMessage}}</span>
+    </b-modal>
   </div>
 </template>
 
 <script>
-import Aside from "../components/Aside/Aside.vue";
 export default {
-  components: {
-    Aside
-  },
   data() {
     return {
+      successMessage: "",
+      alertMessage: "",
       // 分类按钮的数据设置
       selected: "0",
       options: [
@@ -65,8 +76,42 @@ export default {
       ],
 
       // 标题数据
-      title: ""
+      title: "",
+      content: ""
     };
+  },
+  methods: {
+    async handlePost() {
+      if (!this.title) {
+        this.alertMessage = "标题不能为空";
+        this.$refs["post-fail-modal"].show();
+        return;
+      }
+
+      if (!this.content) {
+        this.alertMessage = "文章正文不能为空";
+        this.$refs["post-fail-modal"].show();
+        return;
+      }
+
+      const classification = this.selected;
+      const title = this.title;
+      const content = this.content;
+      this.successMessage = await this.$store.dispatch("write", {
+        classification,
+        title,
+        content
+      });
+      this.$refs["post-success-modal"].show();
+
+      // 还原数据
+      this.selected = "0";
+      this.title = "";
+      this.content = "";
+    },
+    handleBack() {
+      window.close();
+    }
   }
 };
 </script>

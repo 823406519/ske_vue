@@ -4,13 +4,13 @@
       <b-nav class="border-bottom p-2">
         <b-nav-item
           link-classes="text-muted liu-link-hover"
-          to="/users/:id/settings/profile"
+          :to="`/users/${$route.params._id}/settings/profile`"
           active
           active-class="text-primary"
         >个人资料设置</b-nav-item>
         <b-nav-item
           link-classes="text-muted liu-link-hover"
-          to="/users/:id/settings/password"
+          :to="`/users/${$route.params._id}/settings/password`"
           active
           active-class="text-primary"
         >修改密码设置</b-nav-item>

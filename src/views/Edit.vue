@@ -5,7 +5,7 @@
         <div class="row">
           <h5 class="col-10 text-primary">编辑文章</h5>
           <div class="col-2">
-            <b-button v-b-toggle.post variant="primary" size="sm">修改</b-button>
+            <b-button v-b-toggle.post variant="primary" size="sm" @click="handleModify">修改</b-button>
           </div>
         </div>
       </div>
@@ -34,6 +34,7 @@
 
         <div>
           <b-form-textarea
+            v-model="content"
             id="edit-article"
             placeholder="输入正文..."
             rows="100"
@@ -43,15 +44,29 @@
         </div>
       </div>
     </main>
+    <!-- 外部修改文章成功的modal -->
+    <b-modal
+      ref="modify-resource-success-modal"
+      header-class="border-0 pb-0 "
+      size="sm"
+      hide-footer
+    >
+      <span class="text-center d-block font-weight-bold text-success">
+        {{successMessage}}
+        <button class="btn btn-sm btn-primary ml-2" @click="handleBack">关闭窗口</button>
+      </span>
+    </b-modal>
+
+    <!-- 外部修改失败modal -->
+    <b-modal ref="modify-resource-fail-modal" header-class="border-0 pb-0 " size="sm" hide-footer>
+      <span class="text-center d-block font-weight-bold text-danger">{{alertMessage}}</span>
+    </b-modal>
   </div>
 </template>
 
 <script>
-import Aside from "../components/Aside/Aside.vue";
+import { mapState } from "vuex";
 export default {
-  components: {
-    Aside
-  },
   data() {
     return {
       // 分类按钮的数据设置
@@ -65,8 +80,60 @@ export default {
       ],
 
       // 标题数据
-      title: ""
+      title: "",
+      content: "",
+      successMessage: "",
+      alertMessage: ""
     };
+  },
+  computed: {
+    ...mapState(["resource"])
+  },
+  async created() {
+    const _id = this.$route.params._id;
+    await this.$store.dispatch("getResource", _id);
+    this.title = this.resource.title;
+    this.content = this.resource.content;
+    this.selected = this.resource.classification;
+  },
+  methods: {
+    async handleModify() {
+      if (!this.title) {
+        this.alertMessage = "标题不能为空";
+        this.$refs["modify-resource-fail-modal"].show();
+        return;
+      }
+
+      if (!this.content) {
+        this.alertMessage = "文章正文不能为空";
+        this.$refs["modify-resource-fail-modal"].show();
+        return;
+      }
+
+      const _id = this.$route.params._id;
+      const classification = this.selected;
+      const title = this.title;
+      const content = this.content;
+      const { code, message } = await this.$store.dispatch("edit", {
+        _id,
+        classification,
+        title,
+        content
+      });
+
+      if (code === 0) {
+        this.alertMessage = message;
+        this.$refs["modify-resource-fail-modal"].show();
+        return;
+      }
+      if (code === 1) {
+        this.successMessage = message;
+        this.$refs["modify-resource-success-modal"].show();
+      }
+    },
+    handleBack() {
+      window.close();
+    }
   }
 };
 </script>
