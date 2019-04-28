@@ -12,10 +12,10 @@
       <!-- 内容部分  -->
       <div class="card-body">
         <p class="card-text">您的每一份创作，我们都倍感感激！</p>
-        <router-link to="/write" target="_blank" class="ml-3 mr-4 text-decoration-none">
+        <button class="btn btn-link mr-4 text-decoration-none" @click="handleWrite">
           <i class="iconfont icon-combinedshapecopy2 text-primary font-weight-bold"></i>
           <span class="ml-2">写文章</span>
-        </router-link>
+        </button>
       </div>
     </section>
 
@@ -127,12 +127,23 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   methods: {
     handleSearch(title) {
       this.$store.dispatch("search", { title, sort: "hot" });
       this.$router.push("/search/" + title);
+    },
+    handleWrite() {
+      if (!this.isLogin) {
+        this.$root.$emit("bv::show::modal", "login-modal", "#like-counts");
+        return;
+      }
+      window.open("http://localhost:8080/#/write", "_blank");
     }
+  },
+  computed: {
+    ...mapState(["isLogin"])
   }
 };
 </script>
